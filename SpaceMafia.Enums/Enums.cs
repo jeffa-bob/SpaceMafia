@@ -169,10 +169,11 @@ namespace SpaceMafia.Enums
         MiraHQ,
         Polus
     }
-    public enum Pet{
+    public enum Pet
+    {
         EmptyPet,
         Alien,
-        Crewmate, 
+        Crewmate,
         Doggy,
         Stickmin,
         Hamster,
@@ -184,22 +185,23 @@ namespace SpaceMafia.Enums
         Glitch
     }
 
-    public enum RpcCalls{
+    public enum RpcCalls
+    {
         PlayAnimation,
         CompleteTask,
-        SyncSettings,	
-        SetInfec,
-        Exile,
-        CheckNam,	
-        SetNam,
-        CheckColo,	
-        SetColo,	
-        SetHa,
-        SetSkin,	
+        SyncSettings,
+        SetInfected,
+        Exiled,
+        CheckName,
+        SetName,
+        CheckColor,
+        SetColor,
+        SetHat,
+        SetSkin,
         ReportDeadBody,
-        MurderPlayer,	
+        MurderPlayer,
         SendChat,
-        StartMeeting,	
+        StartMeeting,
         SetScanner,
         SendChatNote,
         SetPet,
@@ -210,11 +212,39 @@ namespace SpaceMafia.Enums
         Close,
         VotingComplete,
         CastVote,
-        ClearVote,	
+        ClearVote,
         AddVote,
-        CloseDoorsOfType,	
-        RepairSystem,	
+        CloseDoorsOfType,
+        RepairSystem,
         SetTasks,
         UpdateGameData
     }
+
+    public enum Skin
+    {
+        None,
+        Astro,
+        Capt,
+        Mech,
+        Military,
+        Police,
+        Science,
+        SuitB,
+        SuitW,
+        Wall,
+        Hazmat,
+        Security,
+        Tarmac,
+        Miner,
+        Winter,
+        Archae
+    }
+
+    public enum SpawnFlags
+    {
+        None,
+        IsClientCharacter
+    }
+
+    
 }
