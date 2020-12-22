@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SpaceMafia.Networking\SpaceMafia.Networking\SpaceMafia.Networking.csproj" />
+    <ProjectReference Include="..\SpaceMafia.Networking\SpaceMafia.Networking.csproj" />
+    <ProjectReference Include="..\SpaceMafia.Enums\SpaceMafia.Enums.csproj" />
   </ItemGroup>
 
 </Project>

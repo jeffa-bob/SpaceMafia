@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceMafia", "SpaceMafia\SpaceMafia.csproj", "{3A92271D-8F2A-4E12-B4D1-8276442E62A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceMafia.Networking", "SpaceMafia.Networking\SpaceMafia.Networking\SpaceMafia.Networking.csproj", "{DF8BD7E8-3161-463B-9580-4AB64B557BEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceMafia.Networking", "SpaceMafia.Networking\SpaceMafia.Networking.csproj", "{DF8BD7E8-3161-463B-9580-4AB64B557BEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceMafia.Enums", "SpaceMafia.Enums\SpaceMafia.Enums\SpaceMafia.Enums.csproj", "{63FE7EC6-190D-43CE-8234-ACE9D8A73BAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceMafia.Enums", "SpaceMafia.Enums\SpaceMafia.Enums.csproj", "{63FE7EC6-190D-43CE-8234-ACE9D8A73BAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
