@@ -2,6 +2,9 @@
 
 namespace SpaceMafia.Enums
 {
+
+    // from https://wiki.weewoo.net/wiki/Enums
+
     public enum Color
     {
         Red,
@@ -246,5 +249,97 @@ namespace SpaceMafia.Enums
         IsClientCharacter
     }
 
-    
+    public enum SpawnableObjectIds
+    {
+        ShipStatus,
+        MeetingHud,
+        LobbyBehavior,
+        GameData,
+        VoteBanSystem,
+        Player,
+        CustomNetworkTransform,
+        HeadQuarters,
+        PlanetMap,
+        AprilShipStatus
+    }
+
+    public enum SystemTypes
+    {
+        Hallway,
+        Storage,
+        Cafeteria,
+        Reactor,
+        UpperEngine,
+        Nav,
+        Admin,
+        Electrical,
+        LifeSupp,
+        Shields,
+        MedBay,
+        Security,
+        Weapons,
+        LowerEngine,
+        Comms,
+        ShipTasks,
+        Doors,
+        Sabotage,
+        Decontamination,
+        Launchpad,
+        LockerRoom,
+        Laboratory,
+        Balcony,
+        Office,
+        Greenhouse,
+        Dropship,
+        Decontamination2,
+        Outside,
+        Specimens,
+        Boiler_Room
+    }
+    public enum TaskTypes
+    {
+        SubmitScan,
+        PrimeShields,
+        FuelEngines,
+        ChartCourse,
+        StartReactor,
+        SwipeCard,
+        ClearAsteroids,
+        UploadData,
+        InspectSample,
+        EmptyChute,
+        EmptyGarbage,
+        AlignEngineOutput,
+        FixWiring,
+        CalibrateDistributor,
+        DivertPower,
+        UnlockManifolds,
+        ResetReactor,
+        FixLights,
+        Filter,
+        FixComms,
+        RestoreOxy,
+        StabilizeSteering,
+        AssembleArtifact,
+        SortSamples,
+        MeasureWeather,
+        EnterIdCode,
+        BuyBeverage,
+        ProcessData,
+        RunDiagnostics,
+        WaterPlants,
+        MonitorOxygen,
+        StoreArtifact,
+        FillCanisters,
+        ActivateWeatherNodes,
+        InsertKeys,
+        ResetSeismic,
+        ScanBoardingPass,
+        OpenWaterways,
+        ReplaceWaterJug,
+        RepairDrill,
+        AlignTelescope,
+        RecordTemperature,
+        RebootWifi,
+    }
 }
