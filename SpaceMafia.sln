@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceMafia", "SpaceMafia\Sp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceMafia.Networking", "SpaceMafia.Networking\SpaceMafia.Networking.csproj", "{DF8BD7E8-3161-463B-9580-4AB64B557BEC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceMafia.Enums", "SpaceMafia.Enums\SpaceMafia.Enums.csproj", "{63FE7EC6-190D-43CE-8234-ACE9D8A73BAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceMafia.Extras", "SpaceMafia.Enums\SpaceMafia.Extras.csproj", "{63FE7EC6-190D-43CE-8234-ACE9D8A73BAB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hazel-dotNETCore", "Hazel-dotNETCore\Hazel-dotNETCore\Hazel-dotNETCore.csproj", "{C8AA92F6-A346-4E15-8C9D-EBDFB99B3855}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceMafia.Client", "SpaceMafia.Client\SpaceMafia.Client.csproj", "{03FC845D-E215-452B-9081-1ECF30DF6627}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C8AA92F6-A346-4E15-8C9D-EBDFB99B3855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8AA92F6-A346-4E15-8C9D-EBDFB99B3855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8AA92F6-A346-4E15-8C9D-EBDFB99B3855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03FC845D-E215-452B-9081-1ECF30DF6627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03FC845D-E215-452B-9081-1ECF30DF6627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03FC845D-E215-452B-9081-1ECF30DF6627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03FC845D-E215-452B-9081-1ECF30DF6627}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,12 @@
-﻿using System;
+﻿using Hazel;
+using Hazel.Udp;
+using SpaceMafia.Enums;
+using SpaceMafia.Exceptions;
+using SpaceMafia.Extras;
+using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace SpaceMafia.Networking
 {
@@ -25,10 +31,14 @@ namespace SpaceMafia.Networking
 
     public class Lobby
     {
-        byte Maxplayers = 0x0a;
-        uint Language = 256;
+        private static readonly byte[] HANDSHAKE =
+            {0x4A, 0xE2, 0x02, 0x03, 0x08, 0x49, 0x6D, 0x70, 0x6F, 0x73, 0x74, 0x6F, 0x72};
+
+        string JoinCode;
+        byte MaxPlayers = 0x0a;
+        uint Language = 0;
         byte MapType;
-        float PlayerSpeedModifier = 10.0f;
+        float PlayerSpeedModifier = 1.0f;
         float CrewLightModifier = 1.0f;
         float ImpostorLightModifier = 1.5f;
         float KillCooldown = 15;
@@ -42,9 +52,69 @@ namespace SpaceMafia.Networking
         int VotingTime = 120;
         bool IsDefault = true;
         byte EmeergencyCooldown = 0x0f;
-        bool ComfirmEjects = true;
+        bool ConfirmEjects = true;
         bool VisualTasks = true;
         bool AnonymousVoting = false;
         byte TaskBarUpdates = 0x00;
+
+        private static async Task<(UdpClientConnection, MessageReader)> ConnectToMMAndSend(IPAddress address,
+           ushort port, Action<MessageWriter> writeMessage)
+        {
+            var firstMessageTask = new TaskCompletionSource<MessageReader>();
+
+            var connection = new UdpClientConnection(new IPEndPoint(address, port));
+            connection.KeepAliveInterval = 1000;
+            connection.DisconnectTimeout = 10000;
+            connection.ResendPingMultiplier = 1.2f;
+
+            // Set up an event handler to resolve the task on first non-reselect message received.
+            Action<DataReceivedEventArgs> onDataReceived = null;
+            onDataReceived = args =>
+            {
+                try
+                {
+                    var msg = args.Message.ReadMessage();
+                    if (msg.Tag == (byte)MMTags.ReselectServer) return; // not interested
+
+                    firstMessageTask.TrySetResult(msg);
+                    connection.DataReceived -= onDataReceived;
+                }
+                finally
+                {
+                    args.Message.Recycle();
+                }
+            };
+            connection.DataReceived += onDataReceived;
+
+            // Set up an event handler to set an exception for the task on early disconnect.
+            connection.Disconnected += (sender, args) =>
+            {
+                connection.Dispose();
+                firstMessageTask.TrySetException(new AUException("Connection to matchmaker prematurely exited"));
+            };
+
+            // Connect to the endpoint.
+            connection.ConnectAsync(HANDSHAKE);
+            await connection.ConnectWaitLock.AsTask();
+
+            // Send the contents.
+            connection.SendReliableMessage(writeMessage);
+
+            // Wait for the response to arrive.
+            var response = await firstMessageTask.Task;
+
+            // If this is not a redirect, return the result.
+            if (response.Tag != (byte)MMTags.Redirect)
+            {
+                return (connection, response);
+            }
+
+            // This is a redirect, so do this again but with the new data.
+            var newIp = response.ReadUInt32();
+            var newPort = response.ReadUInt16();
+
+            // Reconnect to new host.
+            return await ConnectToMMAndSend(new IPAddress(newIp), newPort, writeMessage);
+        }
     }
 }

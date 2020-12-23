@@ -1,4 +1,6 @@
 ﻿using System;
+using Hazel;
+using Hazel.Udp;
 using System.Net;
 using System.Collections.Generic;
 using System.Text;
@@ -56,7 +58,7 @@ namespace SpaceMafia.Networking
         {
             const byte length = 0x2e;
             const byte version = 0x04;
-            byte[] packet = new byte[] { length, version, MaxPlayers };
+            byte[] packet = new byte[] { 0x4A, 0xE2, 0x02, 0x03, 0x08, 0x49, 0x6D, 0x70, 0x6F, 0x73, 0x74, 0x6F, 0x72, length, version, MaxPlayers };
             packet = packet.Concat(BitConverter.GetBytes(Language)).ToArray();
             packet = packet.Append(MapType).ToArray();
             packet = packet.Concat(BitConverter.GetBytes(PlayerSpeedModifier)).ToArray();
@@ -83,6 +85,9 @@ namespace SpaceMafia.Networking
 
         public byte[] SendOptionRequest(IPAddress address)
         {
+            UdpBroadcaster broadcaster = new UdpBroadcaster(22023);
+           // broadcaster.
+
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             IPEndPoint endPoint = new IPEndPoint(address, 22023);
             EndPoint senderRemote = (EndPoint)endPoint;

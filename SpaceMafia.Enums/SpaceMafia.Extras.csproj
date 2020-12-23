@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hazel-dotNETCore\Hazel-dotNETCore\Hazel-dotNETCore.csproj" />
-    <ProjectReference Include="..\SpaceMafia.Enums\SpaceMafia.Extras.csproj" />
   </ItemGroup>
 
 </Project>
