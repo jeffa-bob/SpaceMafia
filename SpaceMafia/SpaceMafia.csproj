@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SpaceMafia.Networking\SpaceMafia.Networking.csproj" />
     <ProjectReference Include="..\SpaceMafia.Enums\SpaceMafia.Extras.csproj" />
+    <ProjectReference Include="..\SpaceMafia.Player\SpaceMafia.Player.csproj" />
   </ItemGroup>
 
 </Project>

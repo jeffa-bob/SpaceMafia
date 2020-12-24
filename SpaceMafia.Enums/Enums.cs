@@ -188,41 +188,6 @@ namespace SpaceMafia.Enums
         Glitch
     }
 
-    public enum RpcCalls
-    {
-        PlayAnimation,
-        CompleteTask,
-        SyncSettings,
-        SetInfected,
-        Exiled,
-        CheckName,
-        SetName,
-        CheckColor,
-        SetColor,
-        SetHat,
-        SetSkin,
-        ReportDeadBody,
-        MurderPlayer,
-        SendChat,
-        StartMeeting,
-        SetScanner,
-        SendChatNote,
-        SetPet,
-        SetStartCounter,
-        EnterVent,
-        ExitVent,
-        SnapTo,
-        Close,
-        VotingComplete,
-        CastVote,
-        ClearVote,
-        AddVote,
-        CloseDoorsOfType,
-        RepairSystem,
-        SetTasks,
-        UpdateGameData
-    }
-
     public enum Skin
     {
         None,

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SpaceMafia.Client\SpaceMafia.Client.csproj" />
+    <ProjectReference Include="..\SpaceMafia.Enums\SpaceMafia.Extras.csproj" />
+    <ProjectReference Include="..\SpaceMafia.Networking\SpaceMafia.Networking.csproj" />
+  </ItemGroup>
+
+</Project>

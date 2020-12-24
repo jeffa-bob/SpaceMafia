@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 
 namespace SpaceMafia.Networking
@@ -57,10 +58,10 @@ namespace SpaceMafia.Networking
         byte TaskBarUpdates;// = 0x00;
     }
 
-    public class Client
+    public class AmongUsClient
     {
         private static readonly byte[] HANDSHAKE =
-            {0x4A, 0xE2, 0x02, 0x03, 0x08, 0x49, 0x6D, 0x70, 0x6F, 0x73, 0x74, 0x6F, 0x72};
+            {0x4A, 0xE2, 0x02, 0x03, 0x08, 0x43, 0x4f, 0x4d, 0x4d, 0x55, 0x4e, 0x53, 0x54};
 
         LobbySettings settings;
 
@@ -318,6 +319,10 @@ namespace SpaceMafia.Networking
             {
                 HandleRemovePlayer(message);
             }
+            //else if (message.Tag == (byte)MMTags.WaitForHost)
+            //{
+            //   PingPacket(message);
+            //}
         }
 
         /// <summary>
@@ -471,6 +476,8 @@ namespace SpaceMafia.Networking
                 writer.EndMessage();
 
                 writer.EndMessage();
+
+
             });
         }
 
@@ -528,6 +535,51 @@ namespace SpaceMafia.Networking
             {
                 OnDisconnect?.Invoke();
             }
+        }
+
+        /// <summary>
+        /// This is sent from client and server as a keep alive, and it must be ACKed.
+        /// </summary>
+        public void PingPacket(MessageReader reader)
+        {
+            //var num = reader.ReadUInt16();
+            _connection.SendReliableMessage(writer =>
+            {
+                writer.StartMessage((byte)MMTags.WaitForHost);
+                writer.Write(166);
+
+                writer.EndMessage();
+
+            });
+        }
+
+        public void SendMovement(ushort xpos, ushort ypos, ushort xvel, ushort yvel)
+        {
+            MessageWriter writer = MessageWriter.Get(SendOption.None);
+            writer.StartMessage((byte)MMTags.GameData);
+            writer.Write(_lobbyCode);
+            writer.Write((ushort)5);
+            writer.Write((byte)GameDataTags.Data);
+            writer.WritePacked(_clientId);
+            writer.Write(xpos);
+            writer.Write(ypos);
+            writer.Write(xvel);
+            writer.Write(yvel);
+
+            _connection.Send(writer);
+        }
+
+        public void SendChat(string chat)
+        {
+            //var num = reader.ReadUInt16();
+            _connection.SendReliableMessage(writer =>
+            {
+                writer.StartMessage((byte)RPCCalls.SendChat);
+                writer.Write(chat);
+
+                writer.EndMessage();
+
+            });
         }
     }
 }

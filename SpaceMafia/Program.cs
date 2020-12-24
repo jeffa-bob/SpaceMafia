@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
-using SpaceMafia.Networking;
+using SpaceMafia.Player;
 
 namespace SpaceMafia
 {
@@ -9,12 +9,18 @@ namespace SpaceMafia
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("ABCDEF");
-            Console.WriteLine(Lobbies.GameNameToIntV2("ABCDEF"));
-            GameListRequest request = new GameListRequest(0x01, 0x03, 256);
-            var bytes = request.GenerateOptionRequest();
-            SpaceMafia.Networking.Client player = new SpaceMafia.Networking.Client();
-            await player.Connect(IPAddress.Parse("45.79.40.75"), "EJBRCF");
+
+
+           // SpaceMafia.Networking.AmongUsClient player = new SpaceMafia.Networking.AmongUsClient();
+            //await player.Connect(IPAddress.Parse("45.79.40.75"), "BIMMVF");
+            await Player.Player.Connect("104.237.135.186", "YLJCGF");
+            while (true)
+            {
+               System.Threading.Thread.Sleep(100);
+               Player.Player.Client.PingPacket(null);
+                //Player.Player.Client.SendMovement(0,0,5,5);
+                //Player.Player.Client.SendChat("TREE");
+            }
         }
     }
 }
